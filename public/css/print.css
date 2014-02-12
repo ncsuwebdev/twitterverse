@@ -1,0 +1,9 @@
+body {font-size:11pt;font-family:Verdana, Arial, Helvetica, sans-serif;color:#000;background:#fff;}
+a {color:#000;text-decoration:none;}
+h1 {font-size:16pt;}
+h2 {font-size:14pt;}
+h3 {font-size:12pt;}
+h4, h5, h6 {font-size:11pt;}
+.access, #nav, #footer, #ncsu_branding_bar, #intro, .read_more {display:none;}
+#header {border-bottom:1px solid #333;}
+#header h1 {font-size:18pt;}

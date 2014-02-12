@@ -1,6 +1,7 @@
 <?php
 
 set_include_path(realpath(dirname(__FILE__) . '/../'));
+date_default_timezone_set('America/New_York');
 
 require_once 'Tweets/Ncsu.php';
 
@@ -12,19 +13,21 @@ require_once 'Tweets/Ncsu.php';
  */
 class Tweets_Display
 {
-    public static function timeline($page = 1)
+    public static function timeline($maxId = null)
     {
         $ncsu = new Tweets_Ncsu();
         
         $error = '';
         
         try {
-            $timeline = $ncsu->getTimeline($page);
+            $timeline = $ncsu->getTimeline($maxId);
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
         
         $ret = '';
+        
+        $max_id = null;
         
         if ($error == '') {
             foreach ($timeline as $t) {
@@ -41,26 +44,27 @@ class Tweets_Display
                      . '    <div style="clear:both;"></div>'
                      . '</div>'
                      ;
+                $max_id = $t['id'];
             }
             
             $ret .= '<br /><br />'
-                 . '<a class="twitterButton" href="index.php?page=' . ($page + 1) . '">More...</a>'
+                 . '<a class="twitterButton" href="index.php?maxId=' . $max_id . '">More...</a>'
                  ;
         } else {
             $ret = $error;
         }
         
         return $ret;
-    }	
+    }    
     
-    public static function accounts()
+    public static function accounts($nextCursor = null)
     {
 
         $ncsu = new Tweets_Ncsu();
         
         $error = '';
         try {
-            $friends = $ncsu->getFriends();
+            $friends = $ncsu->getFriends($nextCursor);
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
@@ -68,10 +72,10 @@ class Tweets_Display
         $ret = '';
         
         if ($error == '') {
-            $ret = '<h2 class="tweetHeader">' . count($friends) . ' Organizations are Tweeting</h2>';
+            $ret = '<h2 class="tweetHeader">' . $friends['totalFriends'] . ' Organizations are Tweeting</h2>';
             
             $i = 0; 
-            foreach ($friends as $f) {
+            foreach ($friends['friends'] as $f) {
                 $ret .= '<div class="tweet friend ' . (($i % 2 == 0) ? 'row1' : 'row2') . '">'
                      . '    <div class="avatar"><img src="' . $f['profile_image_url'] . '" alt="' . $f['name'] . '" width="48" height="48" /></div>'
                      . '    <div class="text">'
@@ -84,7 +88,11 @@ class Tweets_Display
                      ;
                      
                 $i++;
-            }         
+            }                                 
+            
+            $ret .= '<br /><br />'
+                 . '<a class="twitterButton" href="orgs.php?nextCursor=' . $friends['nextCursor'] . '">More...</a>'
+                 ;
         } else {
             $ret = $error;
         }
