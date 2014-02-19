@@ -90,9 +90,11 @@ class Tweets_Display
                 $i++;
             }                                 
             
-            $ret .= '<br /><br />'
-                 . '<a class="twitterButton" href="orgs.php?nextCursor=' . $friends['nextCursor'] . '">More...</a>'
-                 ;
+            if($friends['nextCursor'] != 0) {
+                $ret .= '<br /><br />'
+                     . '<a class="twitterButton" href="orgs.php?nextCursor=' . $friends['nextCursor'] . '">More...</a>'
+                     ;
+            }
         } else {
             $ret = $error;
         }

@@ -24,7 +24,7 @@ Visit <a href="http://ncsu.edu/">http://www.ncsu.edu</a>.
        </ul>
        <ul id="social_buttons">
           <li><a href="feed.php" id="rss_updates">Get RSS Updates</a></li>
-     	  <li><a href="http://www.twitter.com/NCStateNews" id="follow_twitter">Follow us on Twitter</a></li>
+     	  <li><a href="http://www.twitter.com/NCState" id="follow_twitter">Follow us on Twitter</a></li>
      	  <li><a href="http://www.ncsu.edu/youtube/" id="youtube" target="youtube">Watch our Videos</a></li>
        </ul>
      </div><!-- end nav --> 
