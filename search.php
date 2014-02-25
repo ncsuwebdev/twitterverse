@@ -12,7 +12,7 @@
           <h2 class="tweetHeader">Tweets about NC State</h2> 
 <p>Find out what the Twitterverse is saying about NC State right now. Using the built-in search functions of Twitter, you can search usernames, tweets, topics, tags and mentions of NC State-related stuff. Twitter’s search returns the most recent results, which can change very quickly. Refresh often.</p>
 <p>To search for specific tags (more about Twitter tags), include the # (hash tag) in your search term. Try searching #ncsu #ncstate or #wolfpack</p>
-            <a class="twitterButton" href="http://search.twitter.com/search?q=%23ncsu+OR+%23ncstate+OR+%23wolfpack">Search Twitter for NC State Tweets</a>
+            <a class="twitterButton" href="https://twitter.com/search?q=ncsu+OR+ncstate+OR+wolfpack">Search Twitter for NC State Tweets</a>
         </div><!-- end tweets --> 
 <?php include_once("inc/layout/right-nav.php"); ?>        
      </div><!-- end copy --> 
